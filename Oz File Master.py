@@ -1,41 +1,61 @@
+# importing the needed modules
 import os
 import sys
 
+# printing some banner and options
 print('{:-^167}'.format('Welcome To Oz Files Master'))
 print('\nAuthor: Tedd Bug\tUnicorn Code ©2020 All Rights Reserved.\n')
 print("\nSelect a file type to search\n[1]--MP4 files"
       "\t[2]--MP3 files\n[3]--PDF files\t[4]--Text files".expandtabs(8))
 print("[5]--MKV files\t[6]--Exe files\n[7]--Apk files\t[8]--Zip files\n[9]--ISO files\t[0]--Exit".expandtabs(8))
 
-
+# prompting for file types to search
 file_type = input('\noz_files>_ ')
+# this is my storage path actually you can change it to fit yours
 root_storage = "D:\\"
-
+# if option 1
 if file_type == '1':
+     # list for storing the mp4 files for counting
     mp4_check = []
+     # printing some title
     print('\n{:_^35}\n'.format('Information On MP4 Files'))
     print('File Name\tFile Size'.expandtabs(28))
+    # using os.walk to walk through the whole sorage path
+    # it's actually slow, do you have an faster alternative?
     result = list(os.walk(root_storage))
+    # it returns a lot of lists of three items, current dir path(list), subdirs in that dir(list) and files in the current dir(tuple)
+    # so I'm looping through all the lists# so I'm looping through all the lists
     for paths in result:
+        # looping through all files in each list returned 
         for file in paths[2]:
+            # since the os.get_size does'nt accept back slashes I'm changing them to forwards at same time concatenating with file name
             full_path = paths[0].replace('\\', '/') + '/' + file
+            # making sure we take only '.mp4' files as that is the first option
             if full_path.endswith('.mp4'):
+                # appending them to the list
                 mp4_check.append(file)
+                 # calling os.get_size on the full path, returns size in bytes
                 file_size_b = os.path.getsize(full_path)
+                 # converting size to kb
                 file_size_kb = file_size_b / 1024
+                  # converting size to mb
                 file_size_mb = file_size_b / 1024 / 1024
+                # doing some simple logic as to what size to measurement to use for each file
                 if file_size_mb >= 0.10:
                     print("{}...mp4\t{:.2f} MB".format(file[:18].strip('.mp4'), file_size_mb).expandtabs(28))
                 elif file_size_mb < 0.10:
                     print("{}...mp4\t{:.2f} KB".format(file[:18].strip('.mp4'), file_size_kb).expandtabs(28))
                 elif file_size_kb < 0.10:
                     print("{}...mp4\t{:.2f} B".format(file[:18].strip('.mp4'), file_size_b).expandtabs(28))
-
+    # if mp4 list not empty
     if mp4_check:
         print(f'\nTotal number of Mp4 files is {len(mp4_check)}.')
     else:
         print('There are no mp4 files.')
 
+ # actually, same applies to all the other file types
+# try optimizing the code maybe there some simple steps better than what I used
+            
 elif file_type == '2':
     mp3_check = []
     print('\n{:_^35}\n'.format('Information On MP3 Files'))
