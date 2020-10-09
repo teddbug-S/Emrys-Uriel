@@ -21,7 +21,7 @@ if file_type == '1':
     print('\n{:_^35}\n'.format('Information On MP4 Files'))
     print('File Name\tFile Size'.expandtabs(28))
     # using os.walk to walk through the whole sorage path
-    # it's actually slow, do you have an faster alternative?
+    # it's actually slow, do you have a faster alternative?
     result = list(os.walk(root_storage))
     # it returns a lot of lists of three items, current dir path(list), subdirs in that dir(list) and files in the current dir(tuple)
     # so I'm looping through all the lists# so I'm looping through all the lists
