@@ -28,13 +28,13 @@ if file_type == '1':
     for paths in result:
         # looping through all files in each list returned 
         for file in paths[2]:
-            # since the os.get_size does'nt accept back slashes I'm changing them to forward slashes at same time concatenating with file name
+            # since the os.path.get_size doesn't accept back slashes I'm changing them to forward slashes at same time concatenating with file name
             full_path = paths[0].replace('\\', '/') + '/' + file
             # making sure we take only '.mp4' files as that is the first option
             if full_path.endswith('.mp4'):
                 # appending them to the list
                 mp4_check.append(file)
-                 # calling os.get_size on the full path, returns size in bytes
+                 # calling os.path.get_size on the full path, returns size in bytes
                 file_size_b = os.path.getsize(full_path)
                  # converting size to kb
                 file_size_kb = file_size_b / 1024
