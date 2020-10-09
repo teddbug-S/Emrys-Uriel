@@ -24,11 +24,11 @@ if file_type == '1':
     # it's actually slow, do you have a faster alternative?
     result = list(os.walk(root_storage))
     # it returns a lot of lists of three items, current dir path(list), subdirs in that dir(list) and files in the current dir(tuple)
-    # so I'm looping through all the lists# so I'm looping through all the lists
+    # so I'm looping through all the lists
     for paths in result:
         # looping through all files in each list returned 
         for file in paths[2]:
-            # since the os.get_size does'nt accept back slashes I'm changing them to forwards at same time concatenating with file name
+            # since the os.get_size does'nt accept back slashes I'm changing them to forward slashes at same time concatenating with file name
             full_path = paths[0].replace('\\', '/') + '/' + file
             # making sure we take only '.mp4' files as that is the first option
             if full_path.endswith('.mp4'):
@@ -40,7 +40,8 @@ if file_type == '1':
                 file_size_kb = file_size_b / 1024
                   # converting size to mb
                 file_size_mb = file_size_b / 1024 / 1024
-                # doing some simple logic as to what size to measurement to use for each file
+                # doing some simple logic as to what size of measurement to use for each file
+                # and also I've shortened the file names to 18 chars in printing it so that it can match the display 
                 if file_size_mb >= 0.10:
                     print("{}...mp4\t{:.2f} MB".format(file[:18].strip('.mp4'), file_size_mb).expandtabs(28))
                 elif file_size_mb < 0.10:
@@ -54,7 +55,7 @@ if file_type == '1':
         print('There are no mp4 files.')
 
  # actually, same applies to all the other file types
-# try optimizing the code maybe there some simple steps better than what I used
+# try optimizing the code maybe there are some simple steps better than what I used
             
 elif file_type == '2':
     mp3_check = []
