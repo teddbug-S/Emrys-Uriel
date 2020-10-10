@@ -32,6 +32,7 @@ def main():
         if len(output) == 0:
             print("Couldn't find that file")
         else:
+            print(f'Found {len(output)} matches.\n')
             [print(x) for x in output]
     else:
         print('The syntax of the command is incorrect')
