@@ -74,7 +74,8 @@ def main():
                 'searchfile': "search_file({!r}, {!r})".format(current_dir, args),
                 'cd': "os.chdir({!r})".format(args),
                 'ls': r"print('\n'+'\n'.join(os.listdir()))".format(args),
-                'searchdir': "search_dir({!r}, {!r})".format(current_dir, args)
+                'searchdir': "search_dir({!r}, {!r})".format(current_dir, args),
+                'bye': "exit({!r})".format('Good Bye')
 
             }
 
@@ -85,6 +86,10 @@ def main():
 
         except FileNotFoundError:
             print("Invalid path specified")
+        except IndexError:
+            print('Invalid input')
+        except (KeyboardInterrupt, IOError):
+            print("Keybord interrupt, enter 'bye' to exit.")
 
 
 if __name__ == '__main__':
