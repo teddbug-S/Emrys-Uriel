@@ -48,12 +48,12 @@ def search_dir(path, dir):
     for root, dirs, files in os.walk(path, topdown=True):
         for _dir in dirs:
             if _dir == dir:
-                path = os.join.path(root, _dir)
-                output.append(path)
-    print('Found directories\n{}'.format("\n".join(output)))
+                output.append(_dir)
 
     if not output:
         print('No directories found.')
+    else:
+        print('Found directories\n{}'.format("\n".join(output)))
 
 
 def main():
