@@ -14,7 +14,7 @@ def search_extension(path, ext):
                 output.setdefault(root, []).append(file)
     print("\n{:-^50}\n".format("Search results"))
     for key, value in output.items():
-        print("Path\n{}\n\nFiles\n{}".format(key, "\n".join(value)))
+        print("\nPath\n{}\n\nFiles\n{}\n".format(key, "\n".join(value)))
     if not output:
         print('\nNo match found.')
 
