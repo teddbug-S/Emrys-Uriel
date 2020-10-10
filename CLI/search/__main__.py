@@ -2,6 +2,7 @@
 import os
 import sys
 
+
 def search_extension(path, ext):
     """Searches for extensions in the given path"""
     output = []
@@ -34,8 +35,9 @@ def search_dir(path, dir):
             if _dir == dir:
                 path = os.join.path(root, _dir)
                 output.append(path)
-    
+
     return output
+
 
 def main():
     # arguments passed in the command prompt
@@ -46,36 +48,42 @@ def main():
         arg = args[0]
         # checking whether the argument passed is an extension, file or dir
         if arg.startswith('.'):
+            # It's an ext
             output = search_extension(dir, arg)
         elif '.' in arg:
+            # It's a file
             output = search_file(dir, arg)
         else:
+            # It's a dir
             output = search_dir(dir, arg)
-        
+
         if len(output) == 0:
             print("Couldn't find that file.")
 
         else:
-            print(f'Found {len(output)} matches.')
+            print(f'Found {len(output)} matches.\n')
             [print(x) for x in output]
-    
+
     elif len(args) == 2:
         dir = args[0]
         arg = args[1]
         # checking whether the argument passed in as extension, file or dir
         if os.path.exists(dir):
             if arg.startswith('.'):
+                # It's an ext
                 output = search_extension(dir, arg)
             elif '.' in arg:
+                # It's a file
                 output = search_file(dir, arg)
             else:
+                # It's a dir
                 output = search_dir(dir, arg)
-            
+
             if len(output) == 0:
                 print("Couldn't find that file.")
 
             else:
-                print(f'Found {len(output)} matches.')
+                print(f'Found {len(output)} matches.\n')
                 [print(x) for x in output]
 
         else:
