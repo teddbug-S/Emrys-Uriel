@@ -11,6 +11,6 @@ Next:
 
 - pip install -e .
 
-If it's not working, try:
+If it doesn't work, try the next command:
 
 - python setup.py install
