@@ -3,7 +3,7 @@ import os
 import sys
 
 def search_extension(path, ext):
-    """Searches for extensions in the path"""
+    """Searches for extensions in the given path"""
     output = []
     for root, dirs, files in os.walk(path, topdown=True):
         for file in files:
@@ -15,7 +15,7 @@ def search_extension(path, ext):
 
 
 def search_file(path, f):
-    """Searches for files in the path"""
+    """Searches for files in the given path"""
     output = []
     for root, dirs, files in os.walk(path, topdown=True):
         for file in files:
@@ -26,55 +26,63 @@ def search_file(path, f):
     return output
 
 
+def search_dir(path, dir):
+    """Searchs for directories in the given path"""
+    output = []
+    for root, dirs, files in os.walk(path, topdown=True):
+        for _dir in dirs:
+            if _dir == dir:
+                path = os.join.path(root, _dir)
+                output.append(path)
+    
+    return output
+
 def main():
-    # arguments passed in the command line
+    # arguments passed in the command prompt
     args = sys.argv[1:]
-    # if there's only one argument passed, the directory is goint to be the cwd
+    # to check whether we have the path specified or not
     if len(args) == 1:
-        # the directory where we are executing the command
         dir = os.getcwd()
-        # to know if the argument is an extension or a file
-        if args[0].startswith('.'):
-            ext = arg
-            output = search_extension(dir, ext)
-
+        arg = args[0]
+        # checking whether the argument passed is an extension, file or dir
+        if arg.startswith('.'):
+            output = search_extension(dir, arg)
+        elif '.' in arg:
+            output = search_file(dir, arg)
         else:
-            file = args[0]
-            output = search_file(dir, file)
-
+            output = search_dir(dir, arg)
+        
         if len(output) == 0:
             print("Couldn't find that file.")
 
         else:
-            print(f'Found {len(output)} matches.\n')
+            print(f'Found {len(output)} matches.')
             [print(x) for x in output]
-
-    # is there's two arguments passed, the first one is the directory to search, and the other one is the file/ext
+    
     elif len(args) == 2:
         dir = args[0]
         arg = args[1]
-        # checking if the directory exists
+        # checking whether the argument passed in as extension, file or dir
         if os.path.exists(dir):
-            # checking if it's an extension or file
             if arg.startswith('.'):
                 output = search_extension(dir, arg)
-
-            else:
+            elif '.' in arg:
                 output = search_file(dir, arg)
-
+            else:
+                output = search_dir(dir, arg)
+            
             if len(output) == 0:
                 print("Couldn't find that file.")
 
             else:
-                print(f'Found {len(output)} matches.\n')
+                print(f'Found {len(output)} matches.')
                 [print(x) for x in output]
 
         else:
-            print("Directory does not exist.")
+            print('Directory does not exist.')
 
     else:
-        print('The syntax of the command is incorrect.')
-
+        print("The syntax of the command is incorrect.")
 
 
 if __name__ == '__main__':
