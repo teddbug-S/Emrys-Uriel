@@ -75,7 +75,8 @@ def main():
                 'cd': "os.chdir({!r})".format(args),
                 'ls': r"print('\n'+'\n'.join(os.listdir()))".format(args),
                 'searchdir': "search_dir({!r}, {!r})".format(current_dir, args),
-                'bye': "exit({!r})".format('Good Bye')
+                'exit': "exit({!r})".format('Exiting'),
+                'cls': "os.system({!r})".format('cls')
 
             }
 
