@@ -90,7 +90,7 @@ def main():
         except IndexError:
             print('Invalid input')
         except (KeyboardInterrupt, IOError):
-            print("\nKeybord interrupt, enter 'bye' to exit.")
+            print("\nKeybord interrupt, enter 'exit' to exit.")
 
 
 if __name__ == '__main__':
