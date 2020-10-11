@@ -1,3 +1,4 @@
+.gitignore
 CLI.egg-info
 build
 dist
