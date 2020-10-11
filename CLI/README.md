@@ -1,16 +1,25 @@
 # How to install the CLI?
 
-To install the **CLI**, navigate to this directory _(./CLI)_ through the command prompt,
-and run the next commands:
+First, clone this repo:
 
-First, install the setuptools package:
+- git clone https://github.com/teddbug-S/Emrys-Uriel.git
 
-- pip install setuptools
+Next, navigate to the downloaded directory:
 
-Next:
+- cd Emrys-Uriel
+
+Install all the required packages:
+
+- pip install -r requirements.txt
+
+Navigate to the CLI directory:
+
+- cd CLI
+
+And install it:
 
 - pip install -e .
 
-If it doesn't work, try the next command:
+or 
 
 - python setup.py install
