@@ -1,7 +1,7 @@
 # importing modules
 import os
 
-from ccipher import cipher_text, decipher_text
+from .ccipher import cipher_text, decipher_text
 
 
 def search_extension(path, ext):
