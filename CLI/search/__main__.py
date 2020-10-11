@@ -1,7 +1,7 @@
 # importing modules
 import os
 
-from ccipher import cipher_text, decipher_text
+from .ccipher import cipher_text, decipher_text
 
 
 def search_extension(path, ext):
@@ -53,7 +53,7 @@ def search_dir(path, dir):
         print('No directories found.')
     else:
         print('Found directories\n{}'.format("\n".join(output)))
-        
+
 
 # for ciphering text files using the Caesar Cipher algorithm
 def cipher_file(file, key):
@@ -67,7 +67,7 @@ def cipher_file(file, key):
         f_2.write(ciphered_content)
     print(f"{file} ciphered successfully, with key {key}.")
 
-    
+
 # same step here
 def decipher_file(file, key):
     with open(file, 'r', encoding='utf-8') as f:
