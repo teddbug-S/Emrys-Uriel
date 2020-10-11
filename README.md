@@ -23,6 +23,6 @@ And install it:
 
 - pip install -e .
 
-or 
+If you get an error message, try the following: 
 
 - python setup.py install
