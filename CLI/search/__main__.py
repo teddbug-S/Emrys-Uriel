@@ -83,7 +83,7 @@ def main():
             if command in commands.keys():
                 eval(commands[command])
             else:
-                print('\ncommand not found\n')
+                print('\ncommand not found')
 
         except FileNotFoundError:
             print("Invalid path specified")
