@@ -1,8 +1,7 @@
 # importing modules
 import os
 
-
-# import sys
+from ccipher import cipher_text, decipher_text
 
 
 def search_extension(path, ext):
@@ -54,6 +53,29 @@ def search_dir(path, dir):
         print('No directories found.')
     else:
         print('Found directories\n{}'.format("\n".join(output)))
+        
+
+# for ciphering text files using the Caesar Cipher algorithm
+def cipher_file(file, key):
+    # takes file and key, key is an int
+    with open(file, 'r', encoding='utf-8') as f:
+        contents = f.read()
+        # reading file
+    with open(file, 'w', encoding='utf-8') as f_2:
+        # ciphering and writing back
+        ciphered_content = cipher_text(contents, key)
+        f_2.write(ciphered_content)
+    print(f"{file} ciphered successfully, with key {key}.")
+
+    
+# same step here
+def decipher_file(file, key):
+    with open(file, 'r', encoding='utf-8') as f:
+        contents = f.read()
+    with open(file, 'w', encoding='utf-8') as f_2:
+        deciphered_content = decipher_text(contents, key)
+        f_2.write(deciphered_content)
+    print(f"{file} deciphered successfully!")
 
 
 def main():
@@ -67,7 +89,9 @@ def main():
             # first input is command
             command = analyze[0]
             # args
-            args = " ".join(analyze[1:])
+            args = "".join(analyze[1])
+            # defining sec args
+            sec_args = analyze[2]
             # defining the set of commands we have
             commands = {
                 'searchext': "search_extension({!r}, {!r})".format(current_dir, args),
@@ -76,7 +100,9 @@ def main():
                 'ls': r"print('\n'+'\n'.join(os.listdir()))".format(args),
                 'searchdir': "search_dir({!r}, {!r})".format(current_dir, args),
                 'exit': "exit({!r})".format('Exiting'),
-                'cls': "os.system({!r})".format('cls')
+                'cls': "os.system({!r})".format('cls'),
+                'cfile': "cipher_file({!r}, {})".format(args, sec_args),
+                'dcfile': "decipher_file({!r}, {})".format(args, sec_args)
 
             }
 
