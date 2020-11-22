@@ -6,7 +6,7 @@ setup(
     packages=['search'],
     entry_points={
         'console_scripts': [
-            'search = search.main',
+            'search = search.__main__:main',
         ]
     }
 )
