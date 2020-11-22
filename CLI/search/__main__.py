@@ -13,19 +13,19 @@ def search(path, *, filename=None, extension=None):
                 if filename == file:
                     r_files.append(file) if root == path else r_files.append(os.path.join(root, file))
                     size = os.path.getsize(os.path.join(root, file))
-                    sizes.append(f"{size / 1000 / 1000:.2f} MB") if size / 1000 / 1000 >= 0.10 else sizes.append(
+                    sizes.append(f"{size:.2f} MB") if size / 1000 / 1000 >= 0.10 else sizes.append(
                         f"{size / 1000:.2f} KB")
             elif extension and not filename:
                 if file.endswith(extension):
                     r_files.append(file) if root == path else r_files.append(os.path.join(root, file))
                     size = os.path.getsize(os.path.join(root, file))
-                    sizes.append(f"{size / 1000 / 1000:.2f} MB") if size / 1000 / 1000 >= 0.10 else sizes.append(
+                    sizes.append(f"{size:.2f} MB") if size / 1000 / 1000 >= 0.10 else sizes.append(
                         f"{size / 1000:.2f} KB")
 
     return r_files, sizes
 
 
-if __name__ == '__main__':
+def main():
     # implementing python's recommended library for cli args
     parser = argparse.ArgumentParser(description="Search for files and extensions where ever you want.")  # created a
     # parser
@@ -55,4 +55,8 @@ if __name__ == '__main__':
         for _files in search_result[0]:
             print(_files)
 
+
+if __name__ == '__main__':
+    main()
+    
     # boom... haha python is so cool man!
