@@ -24,8 +24,7 @@ def crawl(file_obj, word):
     else:
         return found
 
-
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser(description="Crawl a text file for any word or line matches.")
     parser.add_argument('action', help="this command is always just 'crawl' for now, "
                                        "defines the action you want to perform "
@@ -49,3 +48,8 @@ if __name__ == '__main__':
             print(f"\n    No matches for {args.word!r} found in {args.filepath.name}.")
     else:
         print(f"\n    Invalid action please use {'crawl'!r}.")
+
+
+if __name__ == '__main__':
+    main()
+    
