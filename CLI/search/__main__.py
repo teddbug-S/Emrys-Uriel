@@ -13,13 +13,13 @@ def search(path, *, filename=None, extension=None):
                 if filename == file:
                     r_files.append(file) if root == path else r_files.append(os.path.join(root, file))
                     size = os.path.getsize(os.path.join(root, file))
-                    sizes.append(f"{size:.2f} MB") if size / 1000 / 1000 >= 0.10 else sizes.append(
+                    sizes.append(f"{size/1000/1000:.2f} MB") if size / 1000 / 1000 >= 0.10 else sizes.append(
                         f"{size / 1000:.2f} KB")
             elif extension and not filename:
                 if file.endswith(extension):
                     r_files.append(file) if root == path else r_files.append(os.path.join(root, file))
                     size = os.path.getsize(os.path.join(root, file))
-                    sizes.append(f"{size:.2f} MB") if size / 1000 / 1000 >= 0.10 else sizes.append(
+                    sizes.append(f"{size/1000/1000:.2f} MB") if size / 1000 / 1000 >= 0.10 else sizes.append(
                         f"{size / 1000:.2f} KB")
 
     return r_files, sizes
